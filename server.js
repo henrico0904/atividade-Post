@@ -78,7 +78,7 @@ app.get("/pocoes", (req,res) =>{
     }
 
     if(efeito){
-        resultado = resultado.filter((P) => P.efeito.toLowerCase().incluides(efeito.toLowerCase()))
+        resultado = resultado.filter((P) => P.efeito.toLowerCase().includes(efeito.toLowerCase()))
     }
 
     res.status(200).json({
