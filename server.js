@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 
 // Importar Lista de Array
 import dados from "./src/data/dados.js";
-const { bruxos, varinhas, pocoes } = dados;
+const { bruxos, varinhas, pocoes, animais } = dados;
 
 // Criar aplicação com Express e configurar para aceitar JSON
 const app = express();
@@ -79,6 +79,23 @@ app.get("/pocoes", (req,res) =>{
 
     if(efeito){
         resultado = resultado.filter((P) => P.efeito.toLowerCase().includes(efeito.toLowerCase()))
+    }
+
+    res.status(200).json({
+        total: resultado.length,
+        data: resultado,
+    })
+})
+
+app.get("/animais", (req,res) =>{
+    const{nome, tipo} = req.query;
+    let resultado = animais;
+
+    if(nome){
+        resultado = resultado.filter((a) => a.nome.toLowerCase().includes(nome.toLowerCase()));
+    }
+    if(tipo){
+        resultado = resultado.filter((a) => a.tipo.toLowerCase().includes(tipo.toLowerCase()));
     }
 
     res.status(200).json({
