@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 
 // Importar Lista de Array
 import dados from "./src/data/dados.js";
-const { bruxos, varinhas } = dados;
+const { bruxos, varinhas, pocoes } = dados;
 
 // Criar aplicação com Express e configurar para aceitar JSON
 const app = express();
@@ -63,7 +63,12 @@ app.get("/varinhas", (req, res) =>{
         resultado = resultado.filter((v) => v.comprimento.toLowerCase().includes(comprimento.toLowerCase()));
     }
 
+    res.status(200).json({
+        total: resultado.length,
+        data: resultado,
+    });
 })
+
 
 //Adicionar o bruxo na minha lista
 //usar body para capturar informações
