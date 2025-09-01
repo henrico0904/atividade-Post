@@ -146,6 +146,27 @@ app.post("/bruxos", (req,res) =>{
 
 app.post("/varinhas", (req,res) =>{
     const{material, nucleo,comprimento} = req.body
+
+    if(!material || !nucleo){
+        return res.status(400).json({
+            sucess: false,
+            message: "Material e núcleo são obrigatórios para uma varinha"
+        })
+    }
+    const novaVarinha = {
+        id: varinhas.length +1,
+        material,
+        nucleo,
+        comprimento
+    }
+
+    varinhas.push(novaVarinha)
+
+    res.status(201).json({
+        sucess: true,
+        message: "Nova varinha adicionada",
+        data:novaVarinha
+    })
 })
     
 
