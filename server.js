@@ -144,6 +144,13 @@ app.post("/bruxos", (req,res) =>{
 
 
 
+app.post("/varinhas", (req,res) =>{
+    const{material, nucleo,comprimento} = req.body
+})
+    
+
+
+
 
 // Iniciar servidor escutando na porta definida
 app.listen(serverPort, () => {
