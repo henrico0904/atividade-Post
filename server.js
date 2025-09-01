@@ -69,6 +69,23 @@ app.get("/varinhas", (req, res) =>{
     });
 })
 
+app.get("/pocoes", (req,res) =>{
+    const{ nome, efeito} = req.query;
+    let resultado = pocoes;
+
+    if(nome){
+        resultado = resultado.filter((p) => p.nome.toLowerCase().includes(nome.toLowerCase()));
+    }
+
+    if(efeito){
+        resultado = resultado.filter((P) => P.efeito.toLowerCase().incluides(efeito.toLowerCase()))
+    }
+
+    res.status(200).json({
+        total: resultado.length,
+        data: resultado,
+    })
+})
 
 //Adicionar o bruxo na minha lista
 //usar body para capturar informações
